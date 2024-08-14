@@ -1,3 +1,5 @@
+import 'package:first_app/widgets/cardFrutas.dart';
+import 'package:first_app/widgets/container_propaganda.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatelessWidget {
@@ -7,56 +9,70 @@ class Dashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: const Text('Minha dashboard')),
-        body: Column(
-          children: [
-            Center(
-                child: Image.asset(
-              "assets/images/logo.png",
-              height: 95,
-            )),
-            const Row(
-              children: [
-                Icon(Icons.location_on),
-                Text("Cotia, São Paulo"),
-              ],
-            ),
-            const Padding(
-              padding: EdgeInsets.all(32.0),
-              child: TextField(
-                decoration: InputDecoration(
-                  border: OutlineInputBorder(),
-                  hintText: 'Pesquisar na loja',
-                  prefixIcon: Icon(Icons.search),
-                  fillColor: Color.fromARGB(88, 151, 113, 113),
-                  filled: true,
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              Center(
+                  child: Image.asset(
+                "assets/images/logo.png",
+                height: 95,
+              )),
+              const Row(
+                children: [
+                  Icon(Icons.location_on),
+                  Text("Cotia, São Paulo"),
+                ],
+              ),
+              const Padding(
+                padding: EdgeInsets.all(32.0),
+                child: TextField(
+                  decoration: InputDecoration(
+                    border: OutlineInputBorder(),
+                    hintText: 'Pesquisar na loja',
+                    prefixIcon: Icon(Icons.search),
+                    fillColor: Color.fromARGB(155, 97, 26, 26),
+                    filled: true,
+                  ),
                 ),
               ),
-            ),
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                color: const Color.fromARGB(255, 114, 102, 102),
-                border: Border.all(
-                  color: const Color.fromARGB(255, 0, 0, 0), // Cor da borda
-                  width: 2, // Largura da borda
+              const ContainerPropaganda(),
+              const Text("Ofertas"),
+              const SizedBox(height: 20,), //Componente criado na widgets
+          
+              const Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CardFrutas(),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    CardFrutas(),
+                  ],
                 ),
               ),
-              height: 100,
-              padding: EdgeInsets.all(20),
-              margin: EdgeInsets.all(20),
-              child: const Text(
-                'Ricks do rodo',
-                style: TextStyle(
-                  color: Color.fromARGB(255, 255, 255, 255),
-                  fontSize: 32,
+              const SizedBox(
+                height: 20,
+              ),
+              const Center(
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CardFrutas(),
+                    SizedBox(
+                      width: 10,
+                    ),
+                    CardFrutas(),
+                  ],
                 ),
               ),
-            ),
-            const Text("Ofertas"),
-            const Text("Cards de frutas"),
-            const Text("mais vendidos"),
-            const Text("Cards de frutas"),
-          ],
+          
+              
+              const Text("Cards de frutas"),
+              const Text("mais vendidos"),
+              const Text("Cards de frutas"),
+            ],
+          ),
         ));
   }
 }
